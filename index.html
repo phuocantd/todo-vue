@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ToDo</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <h1></h1>
+    <div class="input-group mb-3">
+        <input id="inp" v-model="message" type="text" class="form-control" placeholder="Nhập công việc..."
+            aria-label="Recipient's username" aria-describedby="button-addon2">
+        <div class="input-group-append">
+            <button v-on:click="add" class="btn btn-outline-secondary" type="button" id="btn">Thêm</button>
+        </div>
+    </div>
+
+    <div id="list">
+        <ul class="list-group"> 
+            <todo-item v-for="todo in todoList" v-bind:todo="todo">
+            </todo-item>
+        </ul>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
