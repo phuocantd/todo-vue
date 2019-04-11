@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="./style.css">    
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
@@ -30,8 +30,32 @@
 
     <div id="list">
         <ul class="list-group">
-            <todo-item  v-for="todo in todoList" v-bind:todo="todo.work" v-bind:index="todo.index" v-bind:done="todo.done" >
-            </todo-item>
+            <!--<todo-item  v-for="todo in todoList" v-bind:todo="todo.work" v-bind:index="todo.index" v-bind:done="todo.done" >
+            </todo-item>-->
+            <li class="list-group-item d-flex bd-highlight mb-3" v-for="todo in todoList">
+                <div class="p-2 bd-highlight"> 
+                    <input v-on:click="todo.done=!todo.done; todo.work=(todo.done?`<del>${todo.work}</del>`:todo.work.substring(5, todo.work.length - 6));"
+                        type="checkbox" v-model=todo.done> 
+                </div>
+                <div class="p-2 bd-highlight">
+                    <input v-if = "todo.edit" type="text" v-model="todo.work"
+                        @blur= "todo.edit = false; $emit('update')"
+                        @keyup.enter = "todo.edit=false; $emit('update')">
+                    <div v-else>
+                        <label v-on:click="todo.done=!todo.done; todo.work=(todo.done?`<del>${todo.work}</del>`:todo.work.substring(5, todo.work.length - 6));"
+                            v-html="todo.work">
+                        </label>
+                    </div>
+                </div>
+                <div class="ml-auto p-2 bd-highlight">
+                    <button class="btn btn-warning" v-on:click="todo.edit = true&&!todo.done;"
+                        type="button">Update
+                    </button>
+                    <button class="btn btn-dark" v-on:click="del(todo.index)"
+                        type="button">Delete
+                    </button>
+                </div>
+            </li>
         </ul>
     </div>
 
