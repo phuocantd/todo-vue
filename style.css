@@ -1,0 +1,16 @@
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.header {
+    background-color: blue;
+    padding: 30px 40px;
+    color: white;
+    text-align: center;
+}
+#btn{
+    background-color: red;
+    color: black;
+    width: 150px;
+}
