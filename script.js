@@ -26,7 +26,7 @@ Vue.component('todo-item', {
     // nhận một "prop" (có thể hiểu là một thuộc tính tùy biến) 
     // có tên là "todo".
     props: ['todo', 'index', 'done'],
-    template: '<li v-on:click="tick(index)"  class="list-group-item" ><p v-html="todo" style="float:left"></p> <button v-on:click="del(index)" style="float:right" type="button" class="close">Del</button></li>'
+    template: '<li   class="list-group-item" ><p v-on:click="tick(index)" v-html="todo" style="float:left"></p> <button v-on:click="del(index)" style="float:right" type="button" class="close">Del</button></li>'
     //template: '<li v-on:click="tick(index)" class="list-group-item" v-html="todo"></li>'
     //template: '<button v-on:click="tick(todo)" type="button" class="list-group-item list-group-item-action">{{ todo }}</button>'
 })
@@ -77,9 +77,9 @@ function tick(index) {
 
 function del(index) {
     obj.todoList.splice(index, 1);
-    var bool=obj.todoList[index+1].done;
+    //var bool=obj.todoList[index+1].done;
     for (let i = index; i < obj.todoList.length; i++) {
         obj.todoList[i].index = i;
     }
-    obj.todoList[index].done=!bool;
+    //obj.todoList[index].done=!bool;
 }
