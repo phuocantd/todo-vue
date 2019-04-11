@@ -14,3 +14,10 @@ h1 {
     color: black;
     width: 150px;
 }
+
+.decoration{
+    text-decoration: line-through;
+}
+.non-decoration{
+    text-decoration: none;
+}

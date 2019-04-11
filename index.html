@@ -30,7 +30,7 @@
 
     <div id="list">
         <ul class="list-group">
-            <todo-item v-for="todo in todoList" v-bind:todo="todo.work" v-bind:index="todo.index">
+            <todo-item  v-for="todo in todoList" v-bind:todo="todo.work" v-bind:index="todo.index" v-bind:done="todo.done" >
             </todo-item>
         </ul>
     </div>
