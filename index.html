@@ -34,7 +34,7 @@
             </todo-item>-->
             <li class="list-group-item d-flex bd-highlight mb-3" v-for="todo in todoList">
                 <div class="p-2 bd-highlight"> 
-                    <input v-on:click="todo.done=!todo.done; todo.work=(todo.done?`<del>${todo.work}</del>`:todo.work.substring(5, todo.work.length - 6));"
+                    <input v-on:click="todo.done=!todo.done;"
                         type="checkbox" v-model=todo.done> 
                 </div>
                 <div class="p-2 bd-highlight">
@@ -42,13 +42,13 @@
                         @blur= "todo.edit = false; $emit('update')"
                         @keyup.enter = "todo.edit=false; $emit('update')">
                     <div v-else>
-                        <label v-on:click="todo.done=!todo.done; todo.work=(todo.done?`<del>${todo.work}</del>`:todo.work.substring(5, todo.work.length - 6));"
+                        <label v-bind:class="{'decoration': todo.done,'non-decoration': !todo.done}" v-on:click="todo.done=!todo.done; console.log(todo.done)"
                             v-html="todo.work">
-                        </label>
+                    </label>
                     </div>
                 </div>
                 <div class="ml-auto p-2 bd-highlight">
-                    <button class="btn btn-warning" v-on:click="todo.edit = true&&!todo.done;"
+                    <button class="btn btn-warning" v-on:click="todo.edit = true;"
                         type="button">Update
                     </button>
                     <button class="btn btn-dark" v-on:click="del(todo.index)"
