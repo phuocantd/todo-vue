@@ -1,3 +1,67 @@
+var obj = {
+    todoList: [
+        {
+            work: "sleep",
+            done: false,
+            index: 0,
+            edit:false
+        },
+        {
+            work: "eat",
+            done: false,
+            index: 1,
+            edit:false
+        },
+        {
+            work: "code",
+            done: false,
+            index: 2,
+            edit:false
+        }
+    ]
+}
+
+var vue=new Vue({
+    el:'#vue',
+    data:{
+        message:'',
+        todoList: obj.todoList
+    },
+    methods:{
+        add: function () {
+            if (message != '') {
+                obj.todoList.push({
+                    work: message,
+                    done: false,
+                    index: obj.todoList.length,
+                    edit:false
+                });
+                message = '';
+            }
+        },
+        del: function(index) {
+            obj.todoList.splice(index, 1);
+            for (let i = index; i < obj.todoList.length; i++) {
+                obj.todoList[i].index = i;
+            }
+        },
+        check:function(index){
+            if (obj.todoList[index].done) {
+                obj.todoList[index].done = false;
+            } else {
+                obj.todoList[index].done = true;
+            }
+        }
+    }
+})
+/*
+function check(index) {
+    if (obj.todoList[index].done) {
+        obj.todoList[index].done = false;
+    } else {
+        obj.todoList[index].done = true;
+    }
+}
 var inp = new Vue({
     el: '#inp',
     data: {
@@ -33,28 +97,7 @@ Vue.component('todo-item', {
     //template: '<button v-on:click="tick(todo)" type="button" class="list-group-item list-group-item-action">{{ todo }}</button>'
 })
 
-var obj = {
-    todoList: [
-        {
-            work: "sleep",
-            done: false,
-            index: 0,
-            edit:false
-        },
-        {
-            work: "eat",
-            done: false,
-            index: 1,
-            edit:false
-        },
-        {
-            work: "code",
-            done: false,
-            index: 2,
-            edit:false
-        }
-    ]
-}
+
 
 var list = new Vue({
     el: '#list',
@@ -68,14 +111,8 @@ var list = new Vue({
         }
     }
 })
+*/
 
-function check(index) {
-    if (obj.todoList[index].done) {
-        obj.todoList[index].done = false;
-    } else {
-        obj.todoList[index].done = true;
-    }
-}
 
 /*function tick(index) {
     if (obj.todoList[index].done) {

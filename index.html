@@ -17,48 +17,46 @@
 </head>
 
 <body>
-    <div class="header">
-        <h1 class="display-4">Danh sách công việc</h1>
-        <div class="input-group mb-3">
-            <input id="inp" v-model="message" type="text" class="form-control" placeholder="Nhập công việc..."
-                aria-label="Recipient's username" aria-describedby="button-addon2">
-            <div class="input-group-append">
-                <button v-on:click="add" class="btn btn-outline-secondary" type="button" id="btn">Thêm</button>
+    <div id="vue">
+        <div class="header">
+            <h1 class="display-4">Danh sách công việc</h1>
+            <div class="input-group mb-3">
+                <input v-model="message" type="text" class="form-control" placeholder="Nhập công việc..."
+                    aria-label="Recipient's username" aria-describedby="button-addon2">
+                <div class="input-group-append">
+                    <button v-on:click="add" class="btn btn-outline-secondary" type="button">Thêm</button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div id="list">
-        <ul class="list-group">
-            <!--<todo-item  v-for="todo in todoList" v-bind:todo="todo.work" v-bind:index="todo.index" v-bind:done="todo.done" >
-            </todo-item>-->
-            <li class="list-group-item d-flex bd-highlight mb-3" v-for="todo in todoList">
-                <div class="p-2 bd-highlight"> 
-                    <input v-on:click="todo.done=!todo.done;"
-                        type="checkbox" v-model=todo.done> 
-                </div>
-                <div class="p-2 bd-highlight">
-                    <input v-if = "todo.edit" type="text" v-model="todo.work"
-                        @blur= "todo.edit = false; $emit('update')"
-                        @keyup.enter = "todo.edit=false; $emit('update')">
-                    <div v-else>
-                        <label v-bind:class="{'decoration': todo.done,'non-decoration': !todo.done}" v-on:click="todo.done=!todo.done; console.log(todo.done)"
-                            v-html="todo.work">
-                    </label>
+        <div>
+            <ul class="list-group">
+                <!--<todo-item  v-for="todo in todoList" v-bind:todo="todo.work" v-bind:index="todo.index" v-bind:done="todo.done" >
+                </todo-item>-->
+                <li class="list-group-item d-flex bd-highlight mb-3" v-for="todo in todoList">
+                    <div class="p-2 bd-highlight">
+                        <input v-on:click="todo.done=!todo.done;" type="checkbox" v-model=todo.done>
                     </div>
-                </div>
-                <div class="ml-auto p-2 bd-highlight">
-                    <button class="btn btn-warning" v-on:click="todo.edit = true;"
-                        type="button">Sửa
-                    </button>
-                    <button class="btn btn-dark" v-on:click="del(todo.index)"
-                        type="button">Xóa
-                    </button>
-                </div>
-            </li>
-        </ul>
-    </div>
+                    <div class="p-2 bd-highlight">
+                        <input v-if="todo.edit" type="text" v-model="todo.work"
+                            @blur="todo.edit = false; $emit('update')" @keyup.enter="todo.edit=false; $emit('update')">
+                        <div v-else>
+                            <label v-bind:class="{'decoration': todo.done,'non-decoration': !todo.done}"
+                                v-on:click="todo.done=!todo.done; console.log(todo.done)" v-html="todo.work">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="ml-auto p-2 bd-highlight">
+                        <button class="btn btn-warning" v-on:click="todo.edit = true;" type="button">Sửa
+                        </button>
+                        <button class="btn btn-dark" v-on:click="del(todo.index)" type="button">Xóa
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
 
+    </div>
     <script src="./script.js"></script>
 </body>
 
