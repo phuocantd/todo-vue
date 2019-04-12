@@ -24,32 +24,25 @@ var obj = {
 var vue=new Vue({
     el:'#vue',
     data:{
-        message:'',
+        text:'',
         todoList: obj.todoList
     },
     methods:{
         add: function () {
-            if (message != '') {
+            if (this.$data.text != '') {
                 obj.todoList.push({
-                    work: message,
+                    work: this.$data.text,
                     done: false,
                     index: obj.todoList.length,
                     edit:false
                 });
-                message = '';
+                this.$data.text = '';
             }
         },
         del: function(index) {
             obj.todoList.splice(index, 1);
             for (let i = index; i < obj.todoList.length; i++) {
                 obj.todoList[i].index = i;
-            }
-        },
-        check:function(index){
-            if (obj.todoList[index].done) {
-                obj.todoList[index].done = false;
-            } else {
-                obj.todoList[index].done = true;
             }
         }
     }
