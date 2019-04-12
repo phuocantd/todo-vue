@@ -9,7 +9,7 @@ h1 {
     color: white;
     text-align: center;
 }
-#btn{
+.btn-add{
     background-color: red;
     color: black;
     width: 100px;
